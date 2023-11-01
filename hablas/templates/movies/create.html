@@ -2,7 +2,7 @@
 
 {% block content %}
 <h2>Inserir Novo Filme</h2>
-<form method="POST" action="{% url 'movies:create' %}">
+<form method="POST" action="{% url 'hablas:create' %}">
     {% csrf_token %}
     <p>
         <label for="id_name">Título:</label>

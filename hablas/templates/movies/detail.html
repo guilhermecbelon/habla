@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ habla.name }} ({{ habla.release_year }}
+{% endblock title %}
+
+{% block content %}
+<h2>Detalhes do Filme {{ habla.name }} ({{ habla.release_year }})</h2>
+
+<section class="dados-de-filme">
+    <img src="{{ habla.poster_url }}" alt="Poster do filme {{ habla.name}}">
+    <ul>
+        <li>Nome: {{ habla.name }}</li>
+        <li>Ano de Lançamento: {{ habla.release_year }} </li>
+    </ul>
+</section>
+
+{% endblock content %}

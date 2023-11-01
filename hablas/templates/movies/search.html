@@ -2,7 +2,7 @@
 
 {% block content %}
 <h2>Busca de Filmes por Nome</h2>
-<form action="{% url 'movies:search' %}">
+<form action="{% url 'hablas:search' %}">
     <p>
         <label for="id_query">Título:</label>
         <input type="text" name="query" id="id_query" />
@@ -12,12 +12,12 @@
 
 
 <h2>Resultado da Busca</h2>
-{% if movie_list %}
+{% if habla_list %}
 <section class="lista-de-cards">
-    {% for movie in movie_list %}
+    {% for habla in habla_list %}
     <article class="card">
-        <img src="{{ movie.poster_url }}" alt="Poster do filme {{ movie.name}}">
-        <p>{{ movie.name }} ({{ movie.release_year }})</p>
+        <img src="{{ habla.poster_url }}" alt="Poster do filme {{ habla.name}}">
+        <p>{{ habla.name }} ({{ habla.release_year }})</p>
     </article>
     {% endfor %}
 </section>
