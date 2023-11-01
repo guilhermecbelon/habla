@@ -16,13 +16,11 @@
 
 <body>
     <header id="cabecalho-principal">
-        <a href="{% url 'index' %}"> <img src="{% static 'logo.svg' %}"> </a>
-        <nav id="navegacao-principal">
-            <ul>
-                <li><a href="{% url 'hablas:index' %}">Filmes</a></li>
-                <li><a href="{% url 'about' %}">Sobre</a></li>
-            </ul>
-        </nav>
+        <a href="{% url 'hablas:index' %}"> <img src="{% static 'logo.svg' %}"> </a>
+        <section>
+            <p>Muitos resultados? <a href="{% url 'hablas:search' %}">Buscar Filmes</a></p>
+            <p>Não encontrou o filme? <a href="{% url 'hablas:create' %}">Adicionar Novo Filme</a></p>
+        </section>
 
     </header>
     <main id="conteiner-principal">

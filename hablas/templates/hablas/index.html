@@ -1,12 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Todos os Filmes</h2>
-<section>
-    <p>Muitos resultados? <a href="{% url 'hablas:search' %}">Buscar Filmes</a></p>
-    <p>Não encontrou o filme? <a href="{% url 'hablas:create' %}">Adicionar Novo Filme</a></p>
-</section>
-{% if habla_list %}
+<h2>últimos Hablas</h2>
+{%if habla_list %}
 <section class="lista-de-cards">
     {% for habla in habla_list %}
     <article class="card">
