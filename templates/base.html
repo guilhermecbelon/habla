@@ -17,11 +17,7 @@
 <body>
     <header id="cabecalho-principal">
         <a href="{% url 'hablas:index' %}"> <img src="{% static 'logo.svg' %}"> </a>
-        <section>
-            <p>Muitos resultados? <a href="{% url 'hablas:search' %}">Buscar Filmes</a></p>
-            <p>Não encontrou o filme? <a href="{% url 'hablas:create' %}">Adicionar Novo Filme</a></p>
-        </section>
-
+        <a class = "create_habla" href="{% url 'hablas:create' %}">Clique para Hablar</a>
     </header>
     <main id="conteiner-principal">
         {% block content %}
@@ -29,7 +25,7 @@
     </main>
     <footer id="rodape-principal">
         <p>
-            <small>Copyright 2021</small>
+            <small>Copyright 2023</small>
         </p>
     </footer>
 </body>

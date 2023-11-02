@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>últimos Hablas</h2>
+<h2>Últimos Hablas</h2>
 {%if habla_list %}
 <section class="lista-de-cards">
     {% for habla in habla_list %}
     <article class="card">
-        <a href="{% url 'hablas:detail' forloop.counter %}"><img src="{{ habla.poster_url }}"
-                alt="Poster do filme {{ habla.name}}"></a>
-        <p>{{ habla.name }} ({{ habla.release_year }})</p>
+        <p class ='habla_text'>{{habla.text}}</p>
+        <p>{{ habla.author }} </p>
+        <p>{{ habla.post_date }} </p>
+        <p>likes: {{ habla.likes }} </p>
     </article>
     {% endfor %}
 </section>
