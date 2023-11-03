@@ -14,5 +14,13 @@
         <li>likes: {{ habla.likes }} </li>
     </ul>
 </section>
+<a  href="{% url 'hablas:create_comment' habla.id %}">Comentar</a>
 
+{% for comment in comment_list %}
+    <article class="card">
+        <p>{{comment.comment_text}}</p>
+        <p>{{ comment.author }} </p>
+        <p>{{ comment.post_date }} </p>
+    </article>
+    {% endfor %}
 {% endblock content %}

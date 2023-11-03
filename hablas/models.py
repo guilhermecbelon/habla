@@ -18,7 +18,7 @@ class Comment(models.Model):
                                on_delete=models.CASCADE)
     post_date = models.DateTimeField()
     comment_text = models.CharField(max_length=255)
-    Habla = models.ForeignKey(Habla, on_delete=models.CASCADE)
+    habla = models.ForeignKey(Habla, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'"{self.comment_text}" - ({self.post_date}) - ({self.author.username})'
