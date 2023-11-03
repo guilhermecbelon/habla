@@ -1,11 +1,13 @@
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.shortcuts import render
+from django.contrib.auth.models import User
 from .models import *
-
+from .forms import HablaForm
+from django.shortcuts import render, get_object_or_404
+from datetime import datetime
 
 def detail_habla(request, habla_id):
-    habla_data = Habla.objects.objects.get(pk=habla_id)
+    habla_data = get_object_or_404(Habla,pk=habla_id)
     context = {'habla': habla_data}
     return render(request, 'hablas/detail.html', context)
 
@@ -28,14 +30,20 @@ def search_hablas(request):
 
 
 def create_habla(request):
-    habla_data = Habla.objects.all()
     if request.method == 'POST':
-        habla_data.append({
-            'name': request.POST['name'],
-            'release_year': request.POST['release_year'],
-            'poster_url': request.POST['poster_url']
-        })
-        return HttpResponseRedirect(
-            reverse('hablas:detail', args=(len(habla_data), )))
+        form = HablaForm(request.POST)
+        if form.is_valid():
+            habla_text = request.POST['text']
+            author_id = request.POST['author']
+            habla_author = User.objects.get(id=author_id)
+            print(habla_author, habla_text)
+            habla = Habla(text=habla_text,
+                          post_date = datetime.now(),
+                        author = habla_author)
+            habla.save()
+            return HttpResponseRedirect(
+                reverse('hablas:detail', args=(habla.id, )))
     else:
-        return render(request, 'hablas/create.html', {})
+        form = HablaForm()
+        context = {'form': form}
+        return render(request, 'hablas/create.html', context)

@@ -6,6 +6,7 @@
 <section class="lista-de-cards">
     {% for habla in habla_list %}
     <article class="card">
+        <a href="{% url 'hablas:detail' habla.id %}">detail</a>
         <p class ='habla_text'>{{habla.text}}</p>
         <p>{{ habla.author }} </p>
         <p>{{ habla.post_date }} </p>
