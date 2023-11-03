@@ -11,6 +11,8 @@
         <p>{{ habla.author }} </p>
         <p>{{ habla.post_date }} </p>
         <p>likes: {{ habla.likes }} </p>
+        <a href="{% url 'hablas:delete' habla.id %}">Excluir</a>
+        <a href="{% url 'hablas:edit' habla.id %}">Editar</a>
     </article>
     {% endfor %}
 </section>

@@ -12,3 +12,15 @@ class HablaForm(ModelForm):
             'author': 'Usuário',
             'text': 'Habla',
         }
+
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields = [
+            'author',
+            'comment_text',
+        ]
+        labels = {
+            'author': 'Usuário',
+            'comment_text': 'Comentário',
+        }
