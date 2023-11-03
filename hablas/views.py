@@ -53,6 +53,7 @@ def delete_habla(request,habla_id):
     return list_hablas(request)
 
 def edit_habla(request,habla_id):
+    print(request)
     if request.method == 'POST':
         form = HablaForm(request.POST)
         if form.is_valid():
@@ -67,7 +68,13 @@ def edit_habla(request,habla_id):
     else:
         form = HablaForm()
         context = {'form': form}
-        return render(request, 'hablas/create.html', context)
+        return render(request, 'hablas/edit.html', context)
+    
+def like_habla(request,habla_id):    
+    habla = Habla.objects.get(id=habla_id)
+    habla.likes+=1
+    habla.save()
+    return list_hablas(request)
     
     
 def create_comment(request, habla_id):
