@@ -6,21 +6,21 @@
 
 {% block content %}
 
-<section class="habla_detail">
-    <ul>
-        <li>{{habla.text}}</li>
-        <li>{{ habla.author }} </li>
-        <li>{{ habla.post_date }} </li>
-        <li>likes: {{ habla.likes }} </li>
-    </ul>
-</section>
-<a  href="{% url 'hablas:create_comment' habla.id %}">Comentar</a>
+<article class="card">
+    <h3 class="'habla_text">{{ habla.author }} postou:</h3>
+    <h2>{{habla.text}} </h2>
+    <h3>{{ habla.post_date }} </h3>
+    <h3>{{ habla.likes }} curtidas </h3>
+    <section class ='habla_buttons'>
+        <a style="background-color: blue;" class="habla_button" href="{% url 'hablas:create_comment' habla.id %}">Adicionar Comentário</a>
+    </section>
+</article>
 
 {% for comment in comment_list %}
     <article class="card">
-        <p>{{comment.comment_text}}</p>
-        <p>{{ comment.author }} </p>
-        <p>{{ comment.post_date }} </p>
+        <h3>{{ comment.author }} comentou: </h3>
+        <h2>{{comment.comment_text}}</h2>
+        <h3>{{ comment.post_date }} </h3>
     </article>
     {% endfor %}
 {% endblock content %}

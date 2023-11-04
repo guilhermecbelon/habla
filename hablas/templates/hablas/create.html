@@ -2,10 +2,10 @@
 
 {% block content %}
 <h2>Inserir Novo Habla</h2>
-<form method="post" action="{% url 'hablas:create' %}">
+<form class='habla_creation' method="post" action="{% url 'hablas:create' %}">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Criar</button>
+    <button class='save_button'type="submit">Criar</button>
 </form>
 
 {% endblock content %}

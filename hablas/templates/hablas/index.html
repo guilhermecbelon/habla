@@ -6,19 +6,21 @@
 <section class="lista-de-cards">
     {% for habla in habla_list %}
     <article class="card">
-        <a href="{% url 'hablas:detail' habla.id %}">detail</a>
-        <p class ='habla_text'>{{habla.text}}</p>
-        <p>{{ habla.author }} </p>
-        <p>{{ habla.post_date }} </p>
-        <p>likes: {{ habla.likes }} </p>
-        <a href="{% url 'hablas:delete' habla.id %}">Excluir</a>
-        <a href="{% url 'hablas:edit' habla.id %}">Editar</a>
-        <a href="{% url 'hablas:like' habla.id %}">like</a>
+        <h1 class="'habla_text">{{ habla.author }} postou:</h1>
+        <h2>{{habla.text}} </h2>
+        <h1>{{ habla.post_date }} </h1>
+        <h1>{{ habla.likes }} curtidas </h1>
+        <section class ='habla_buttons'>
+            <a style="background-color: blue;" class="habla_button" href="{% url 'hablas:detail' habla.id %}">Ver mais</a>
+            <a style="background-color: red;" class="habla_button" href="{% url 'hablas:delete' habla.id %}">Excluir</a>
+            <a style="background-color:saddlebrown;" class="habla_button" href="{% url 'hablas:edit' habla.id %}">Editar</a>
+            <a style="background-color: green;" class="habla_button" href="{% url 'hablas:like' habla.id %}">Curtir</a>
+        </section>
     </article>
     {% endfor %}
 </section>
 {% else %}
-<p>Não foi encontrado nenhum filme.</p>
+<p>Não foi encontrado nenhum Habla.</p>
 {% endif %}
 
 {% endblock content %}

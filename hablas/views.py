@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import *
 from .forms import *
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from datetime import datetime
 
 def detail_habla(request, habla_id):
@@ -16,18 +16,6 @@ def list_hablas(request):
     habla_data = Habla.objects.all()
     context = {"habla_list": reversed(habla_data)}
     return render(request, 'hablas/index.html', context)
-
-def search_hablas(request):
-    habla_data = Habla.objects.all()
-    context = {}
-    if request.GET.get('query', False):
-        context = {
-            "habla_list": [
-                m for m in habla_data
-                if request.GET['query'].lower() in m['name'].lower()
-            ]
-        }
-    return render(request, 'hablas/search.html', context)
 
 def create_habla(request):
     if request.method == 'POST':
@@ -50,7 +38,7 @@ def create_habla(request):
 def delete_habla(request,habla_id):
     habla = Habla.objects.get(id=habla_id)
     habla.delete()    
-    return list_hablas(request)
+    return redirect('hablas:index')
 
 def edit_habla(request,habla_id):
     print(request)
@@ -74,7 +62,7 @@ def like_habla(request,habla_id):
     habla = Habla.objects.get(id=habla_id)
     habla.likes+=1
     habla.save()
-    return list_hablas(request)
+    return redirect('hablas:index')
     
     
 def create_comment(request, habla_id):

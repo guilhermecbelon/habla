@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Editar Habla</h2>
-<form method="post" >
+<form class='habla_creation' method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">salvar</button>
+    <button class='save_button'type="submit">Salvar</button>
 </form>
 
 {% endblock content %}

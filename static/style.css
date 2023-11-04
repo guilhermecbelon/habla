@@ -5,7 +5,7 @@ body {
   border: solid;
   align-items: center;
   justify-content: center;
-  background-color: rgb(113, 113, 113);
+  background-color: rgb(0, 0, 0);
 }
 
 
@@ -47,18 +47,18 @@ header#cabecalho-principal {
 
 h2{
   color: white;
-  
   font-family: Inter, sans-serif;
 }
 
+
 .card {
-  border: 1px solid red;
+  border: solid red;
   color: white;
   border-radius: 5px;
   box-shadow: 2px 2px 10px var(--color-shadow);
   margin: 1rem;
   padding: 1.25rem;
-  width: 285px;
+  width: 50vh;
 }
 
 .habla_detail{
@@ -66,6 +66,81 @@ h2{
   color: white;
 }
 
+.habla_text{
+  font-size: large;
+  font-weight: bold;
+  font-family: Inter, sans-serif;
+}
+
+.detail_button {
+  background-color: #3127f4;
+  border:  none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:50%;
+  height: 5vh;
+  font-size: large;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  border-radius: 15px;
+}
+
+.habla_button{
+  border:  none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:50%;
+  height: 5vh;
+  font-size: large;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  border-radius: 15px;
+  margin: 1%;
+}
+
+.habla_buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.habla_creation{
+  font-family: Inter, sans-serif;
+  border: solid red;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px var(--color-shadow);
+  margin: 1rem;
+  padding: 1.25rem;
+  width: 35vh;
+}
+
+.save_button{
+  background-color: red;
+  font-size: large;
+  color: white;
+  width: 12vh;
+  border: 0;
+  height: 4vh;
+  border-radius: 10px;
+}
+
+
+
+
+
+footer#rodape-principal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1rem;
+  color: white;
+}
 /*:root {
   --primary-color: #000000;
   --secondary-color: #118bee;
