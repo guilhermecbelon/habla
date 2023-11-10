@@ -7,10 +7,12 @@ class HablaForm(ModelForm):
         fields = [
             'author',
             'text',
+            'cattegory'
         ]
         labels = {
             'author': 'Usuário',
             'text': 'Habla',
+            'cattegory': 'Categoria'
         }
 
 class CommentForm(ModelForm):
