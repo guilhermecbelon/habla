@@ -8,9 +8,10 @@ class Habla(models.Model):
     text = models.CharField(max_length=255)
     post_date = models.DateTimeField()
     likes  = models.IntegerField(default=0)
+    cattegory = models.CharField(max_length=255)
     
     def __str__(self):
-        return f'{self.text} - ({self.post_date}) - ({self.author.username})'
+        return f'{self.text} - ({self.post_date}) - ({self.author.username}) - ({self.cattegory})'
 
 
 class Comment(models.Model):

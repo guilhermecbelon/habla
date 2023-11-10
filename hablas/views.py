@@ -24,9 +24,11 @@ def create_habla(request):
             habla_text = request.POST['text']
             author_id = request.POST['author']
             habla_author = User.objects.get(id=author_id)
+            cattegory = request.POST['cattegory']
             habla = Habla(text=habla_text,
                           post_date = datetime.now(),
-                        author = habla_author)
+                        author = habla_author,
+                        cattegory = cattegory)
             habla.save()
             return HttpResponseRedirect(
                 reverse('hablas:detail', args=(habla.id, )))
@@ -47,7 +49,8 @@ def edit_habla(request,habla_id):
         if form.is_valid():
             habla = Habla.objects.get(id=habla_id)
             habla.text = request.POST['text']
-            author_id = request.POST['author']
+            author_id = request.POST['author']            
+            habla.cattegory = request.POST['cattegory']
             habla.author = User.objects.get(id=author_id)
             habla.post_date = datetime.now()
             habla.save()
@@ -85,4 +88,16 @@ def create_comment(request, habla_id):
         context = {'form': form}
         return render(request, 'hablas/create_comment.html', context)
     
+
+
+def search_hablas(request):
+    context={}
+    if request.GET.get("query", False):
+        search_term = request.GET["query"].lower()
+        context = {'search_term':search_term}
+        habla_list = Habla.objects.filter(cattegory__icontains=search_term)
+        if len(habla_list)> 0:
+            context["habla_list"]= (habla_list)
+    print(context)
+    return render(request, "hablas/search.html", context)
 
