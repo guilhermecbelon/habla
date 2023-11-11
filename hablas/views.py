@@ -42,7 +42,6 @@ def delete_habla(request,habla_id):
     return redirect('hablas:index')
 
 def edit_habla(request,habla_id):
-    print(request)
     if request.method == 'POST':
         form = HablaForm(request.POST)
         if form.is_valid():
@@ -59,6 +58,20 @@ def edit_habla(request,habla_id):
         form = HablaForm()
         context = {'form': form}
         return render(request, 'hablas/edit.html', context)
+    
+class EditHablaView(generic.UpdateView):
+    model = Habla
+    form_class = HablaForm
+    template_name = 'hablas/edit.html'
+
+    def form_valid(self, form):
+        habla = form.save(commit=False)
+        habla.post_date = datetime.now()
+        habla.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('hablas:detail', kwargs={'pk': self.object.pk})
     
 def like_habla(request,habla_id):    
     habla = Habla.objects.get(id=habla_id)
