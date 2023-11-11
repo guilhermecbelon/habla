@@ -98,6 +98,13 @@ def search_hablas(request):
         habla_list = Habla.objects.filter(cattegory__icontains=search_term)
         if len(habla_list)> 0:
             context["habla_list"]= (habla_list)
-    print(context)
     return render(request, "hablas/search.html", context)
+
+def search_hablas_by_tag(request, habla_cattegory):
+    context = {'search_term':habla_cattegory}
+    habla_list = Habla.objects.filter(cattegory__icontains=habla_cattegory)
+    if len(habla_list)> 0:
+        context["habla_list"]= (habla_list)
+    return render(request, "hablas/search.html", context)
+
 

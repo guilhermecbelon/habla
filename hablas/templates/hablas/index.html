@@ -11,7 +11,9 @@
         <h1>{{ habla.post_date }} </h1>
         <h1>{{ habla.likes }} curtidas </h1>
         {%if habla.cattegory %}
-            <h1>#{{ habla.cattegory }}</h1>
+        <a style="background-color: rgb(169, 169, 52);" 
+            class="habla_button" href="{% url 'hablas:search_by_tag' habla.cattegory %}">
+            #{{ habla.cattegory }}</a>
             {% endif %}
         <section class ='habla_buttons'>
             <a style="background-color: blue;" class="habla_button" href="{% url 'hablas:detail' habla.id %}">Ver mais</a>
