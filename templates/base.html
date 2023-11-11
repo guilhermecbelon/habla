@@ -18,6 +18,13 @@
     <header id="cabecalho-principal">
         <a href="{% url 'hablas:index' %}"> <img src="{% static 'logo.svg' %}"> </a>
         <a class = "create_habla" href="{% url 'hablas:create' %}">Clique para Hablar</a>
+        <form class='search_form'action="{% url 'hablas:search' %}">
+            <h3>Buscar categorias</h3>
+            <p>
+                <input class="input_cattegory" type="text" name="query" id="id_query" />
+            </p>
+            <button class="search" type="submit">Buscar</button>
+        </form>        
     </header>
     <main id="conteiner-principal">
         {% block content %}
