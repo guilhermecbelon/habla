@@ -7,12 +7,6 @@ from .forms import *
 from django.shortcuts import render, get_object_or_404, redirect
 from datetime import datetime
 
-def detail_habla(request, habla_id):
-    habla_data = get_object_or_404(Habla,pk=habla_id)
-    comment_data = Comment.objects.filter(habla_id=habla_id)
-    context = {'habla': habla_data, 'comment_list':reversed(comment_data)}
-    return render(request, 'hablas/detail.html', context)
-
 class ListHablasView(generic.ListView):
     model = Habla
     template_name = 'hablas/index.html'
@@ -20,6 +14,25 @@ class ListHablasView(generic.ListView):
 
     def get_queryset(self):
         return reversed(Habla.objects.all())
+    
+def detail_habla(request, habla_id):
+    habla_data = get_object_or_404(Habla,pk=habla_id)
+    comment_data = Comment.objects.filter(habla_id=habla_id)
+    context = {'habla': habla_data, 'comment_list':reversed(comment_data)}
+    return render(request, 'hablas/detail.html', context)
+
+
+
+class DetailHablaView(generic.DetailView):
+    model = Habla
+    template_name = 'hablas/detail.html'
+    context_object_name = 'habla'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        comment_data = Comment.objects.filter(habla=self.object)
+        context['comment_list'] = reversed(comment_data)
+        return context
 
 def create_habla(request):
     if request.method == 'POST':
