@@ -1,4 +1,5 @@
 from django.http import HttpResponseRedirect
+from django.views import generic
 from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import *
@@ -12,10 +13,13 @@ def detail_habla(request, habla_id):
     context = {'habla': habla_data, 'comment_list':reversed(comment_data)}
     return render(request, 'hablas/detail.html', context)
 
-def list_hablas(request):
-    habla_data = Habla.objects.all()
-    context = {"habla_list": reversed(habla_data)}
-    return render(request, 'hablas/index.html', context)
+class ListHablasView(generic.ListView):
+    model = Habla
+    template_name = 'hablas/index.html'
+    context_object_name = 'habla_list'
+
+    def get_queryset(self):
+        return reversed(Habla.objects.all())
 
 def create_habla(request):
     if request.method == 'POST':

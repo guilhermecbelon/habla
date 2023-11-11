@@ -4,7 +4,7 @@
 <h2>Últimos Hablas</h2>
 {%if habla_list %}
 <section class="lista-de-cards">
-    {% for habla in habla_list %}
+    {% for habla in object_list %}
     <article class="card">
         <h1 class="'habla_text">{{ habla.author }} postou:</h1>
         <h2>{{habla.text}} </h2>
