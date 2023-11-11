@@ -11,6 +11,10 @@
     <h2>{{habla.text}} </h2>
     <h3>{{ habla.post_date }} </h3>
     <h3>{{ habla.likes }} curtidas </h3>
+    {%if habla.cattegory %}
+    <h3>
+        #{{ habla.cattegory }}</h3>
+        {% endif %}
     <section class ='habla_buttons'>
         <a style="background-color: blue;" class="habla_button" href="{% url 'hablas:create_comment' habla.id %}">Comentar</a>
     </section>

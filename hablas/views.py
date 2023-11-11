@@ -1,10 +1,10 @@
 from django.http import HttpResponseRedirect
 from django.views import generic
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.models import User
 from .models import *
 from .forms import *
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 from datetime import datetime
 
 class ListHablasView(generic.ListView):
@@ -14,14 +14,6 @@ class ListHablasView(generic.ListView):
 
     def get_queryset(self):
         return reversed(Habla.objects.all())
-    
-def detail_habla(request, habla_id):
-    habla_data = get_object_or_404(Habla,pk=habla_id)
-    comment_data = Comment.objects.filter(habla_id=habla_id)
-    context = {'habla': habla_data, 'comment_list':reversed(comment_data)}
-    return render(request, 'hablas/detail.html', context)
-
-
 
 class DetailHablaView(generic.DetailView):
     model = Habla
@@ -34,26 +26,16 @@ class DetailHablaView(generic.DetailView):
         context['comment_list'] = reversed(comment_data)
         return context
 
-def create_habla(request):
-    if request.method == 'POST':
-        form = HablaForm(request.POST)
-        if form.is_valid():
-            habla_text = request.POST['text']
-            author_id = request.POST['author']
-            habla_author = User.objects.get(id=author_id)
-            cattegory = request.POST['cattegory']
-            habla = Habla(text=habla_text,
-                          post_date = datetime.now(),
-                        author = habla_author,
-                        cattegory = cattegory)
-            habla.save()
-            return HttpResponseRedirect(
-                reverse('hablas:detail', args=(habla.id, )))
-    else:
-        form = HablaForm()
-        context = {'form': form}
-        return render(request, 'hablas/create.html', context)
-    
+class CreateHablaView(generic.CreateView):
+    model = Habla
+    form_class = HablaForm
+    template_name = 'hablas/create.html'
+    success_url = reverse_lazy('hablas:index') 
+
+    def form_valid(self, form):
+        form.instance.post_date = datetime.now()
+        return super().form_valid(form)
+
 def delete_habla(request,habla_id):
     habla = Habla.objects.get(id=habla_id)
     habla.delete()    
