@@ -1,0 +1,175 @@
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0, 0, 0);
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+header#cabecalho-principal {
+  margin: 0 auto;
+  width: 100vw;
+  max-width: 1080px;
+  padding: 3rem 1rem;
+  font-family: Inter, sans-serif;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-decoration: none;
+}
+
+.a{ 
+  text-decoration: none;
+}
+.search_form{
+  width: 35%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.input_cattegory{
+  background-color: white;
+  border:  none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:30vh;
+  height: 5vh;
+  padding-left: 10px;
+  border-radius: 15px;
+}
+
+
+.create_habla {
+  border: solid;
+  background-color: #f44d27;
+  border:  none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:35%;
+  height: 5vh;
+  font-size: large;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  border-radius: 15px;
+}
+
+h2{
+  color: white;
+  font-family: Inter, sans-serif;
+}
+
+button.search{
+  background-color: red;
+    border:  none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:50%;
+    height: 5vh;
+    font-size: large;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    border-radius: 15px;
+    margin: 1%;
+}
+
+.card {
+  border: solid red;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px var(--color-shadow);
+  margin: 1rem;
+  padding: 1.25rem;
+  width: 50vh;
+}
+
+.habla_detail{
+  border:  solid red;
+  color: white;
+}
+
+.habla_text{
+  font-size: large;
+  font-weight: bold;
+  font-family: Inter, sans-serif;
+}
+
+.detail_button {
+  background-color: #3127f4;
+  border:  none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:50%;
+  height: 5vh;
+  font-size: large;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  border-radius: 15px;
+}
+
+.habla_button{
+  border:  none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:50%;
+  height: 5vh;
+  font-size: large;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  border-radius: 15px;
+  margin: 1%;
+}
+
+.habla_buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.habla_creation{
+  font-family: Inter, sans-serif;
+  border: solid red;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px var(--color-shadow);
+  margin: 1rem;
+  padding: 1.25rem;
+  width: 35vh;
+}
+
+.save_button{
+  background-color: red;
+  font-size: large;
+  color: white;
+  width: 12vh;
+  border: 0;
+  height: 4vh;
+  border-radius: 10px;
+}
+
+footer#rodape-principal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1rem;
+  color: white;
+}
