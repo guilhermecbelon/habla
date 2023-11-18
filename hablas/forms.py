@@ -12,7 +12,7 @@ class HablaForm(ModelForm):
         labels = {
             'author': 'Usuário',
             'text': 'Habla',
-            'cattegory': 'Categoria'
+            'cattegory': 'Categorias'
         }
 
 class CommentForm(ModelForm):

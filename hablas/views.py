@@ -40,24 +40,6 @@ def delete_habla(request,habla_id):
     habla = Habla.objects.get(id=habla_id)
     habla.delete()    
     return redirect('hablas:index')
-
-def edit_habla(request,habla_id):
-    if request.method == 'POST':
-        form = HablaForm(request.POST)
-        if form.is_valid():
-            habla = Habla.objects.get(id=habla_id)
-            habla.text = request.POST['text']
-            author_id = request.POST['author']            
-            habla.cattegory = request.POST['cattegory']
-            habla.author = User.objects.get(id=author_id)
-            habla.post_date = datetime.now()
-            habla.save()
-            return HttpResponseRedirect(
-                reverse('hablas:detail', args=(habla.id, )))
-    else:
-        form = HablaForm()
-        context = {'form': form}
-        return render(request, 'hablas/edit.html', context)
     
 class EditHablaView(generic.UpdateView):
     model = Habla
